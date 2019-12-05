@@ -22,12 +22,8 @@ public class CurrencyRestController {
     @Qualifier("currencyMysqlServiceImpl")
     private CurrencyService currencyMysqlServiceImpl;
 
-    @Autowired
-    @Qualifier("currencyH2ServiceImpl")
-    private CurrencyService currencyH2Service;
-
     @PostMapping("/addCurrency")
-    private CurrencyResponse addCurrencyH2(@RequestBody CurrencyRequest currencyRequest) {
+    private CurrencyResponse addCurrency(@RequestBody CurrencyRequest currencyRequest) {
 
         CurrencyResponse result = new CurrencyResponse();
         result.setCurrencyRequest(currencyRequest);
@@ -37,9 +33,6 @@ public class CurrencyRestController {
 
         CurrencyResponse currencyResponseM = currencyMysqlServiceImpl.saveCurrency(currencyRequest);
         result.getMessagePairList().addAll(currencyResponseM.getMessagePairList());
-
-        CurrencyResponse currencyResponseH = currencyH2Service.saveCurrency(currencyRequest);
-        result.getMessagePairList().addAll(currencyResponseH.getMessagePairList());
 
         return result;
     }
