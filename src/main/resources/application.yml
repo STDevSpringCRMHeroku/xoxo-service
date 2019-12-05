@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: SpringBoot-jasypt-datasource
+  # -------------------------------- H2 Settings -------------------------------- #
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true
+
+# -------------------------------- Datasources -------------------------------- #
+h2:
+  datasource:
+    jdbc-url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 1
+      maximum-pool-size: 5
+      poolName: SpringBootHikariH2
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        ddl-auto: none
+postgresql:
+  datasource:
+    jdbc-Url: jdbc:postgresql://ec2-107-20-183-142.compute-1.amazonaws.com:5432/d986sp1hs8cc4m?sslmode=require
+    username: scvemignetfbdn
+    password: d8253d6f12d2d38361fd1e543a8f394f3626cb3bc7ac1fa245aa9e7ee4e19181
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 1
+      maximum-pool-size: 5
+      poolName: SpringBootHikariPostgres
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: create
+mysql:
+  datasource:
+    #jdbc-Url: jdbc:mysql://localhost:3306/testdb?useSSL=false;useUnicode=true;useJDBCCompliantTimezoneShift=true;useLegacyDatetimeCode=false;serverTimezone=UTC
+    jdbc-Url: jdbc:mysql://localhost:3306/dbtest?useSSL=false&serverTimezone=UTC&useCursors=false&sendStringParametersAsUnicode=false&characterEncoding=UTF8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 1
+      maximum-pool-size: 5
+      poolName: SpringBootHikariPostgres
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        ddl-auto: create
+# -------------------------------- jasypt -------------------------------- 
+jasypt:
+  encryptor:
+    bean: encryptorBean
+
+#jasypt.encryptor.password=password
+#jasypt.encryptor.password=password
+#java -cp .m2/repository/org/jasypt/jasypt/1.9.3/jasypt-1.9.3.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="Topsecret@123" password=password algorithm=PBEWithMD5AndDES
+#java -cp .m2/repository/org/jasypt/jasypt/1.9.3/jasypt-1.9.3.jar org.jasypt.intf.cli.JasyptPBEStringDecryptionCLI input="xnEtUEQpYI2OT+SkCvov0yO8ZaZrVIYi" password=password algorithm=PBEWithMD5AndDES
