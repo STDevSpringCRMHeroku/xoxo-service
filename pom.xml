@@ -4,12 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--
-        http://www.springboottutorial.com/spring-boot-starter-parent
-        spring boot startter parent contiene las dependencias necesarias para realizar
-        un proyecto "spring boot"
-    -->
-
+    <!-- SPRING parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -17,19 +12,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <!-- DATA del proyecto -->
     <groupId>groupId</groupId>
     <artifactId>xoxo</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
-        <maven.compiler.target>11</maven.compiler.target>
-        <maven.compiler.source>11</maven.compiler.source>
-        <junit-plataform.version>5.3.2</junit-plataform.version>
-        <jasypt.version>2.1.2</jasypt.version>
-    </properties>
 
     <dependencies>
 
@@ -45,25 +31,10 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Encriptar con la libreria jasypt de forma básica -->
-        <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>${jasypt.version}</version>
-        </dependency>
-
         <!-- Java Bean Validations :: https://www.baeldung.com/javax-validation -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-        </dependency>
-
-        <!-- DataSources -->
-
-        <!-- hikari -->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
         </dependency>
 
         <!-- JUnit5 -->
@@ -76,6 +47,21 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope> <!-- test folder -->
+        </dependency>
+
+        <!-- Encriptar con la libreria jasypt de forma básica -->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
+
+        <!-- DataSources -->
+
+        <!-- hikari -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
         </dependency>
 
         <!-- Spring Data module for JPA repositories. -->
@@ -101,6 +87,7 @@
             <version>6.0.17.Final</version>
         </dependency>
         <!-- End Hibernate 5.x -->
+
         <!-- Spring Object/Relational Mapping -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -126,6 +113,7 @@
             <artifactId>spring-aspects</artifactId>
         </dependency>
 
+        <!-- Dependencias GitHub, settings.xml -->
         <dependency>
             <groupId>com.froyo</groupId>
             <artifactId>java-mvn-messagesresponse</artifactId>
@@ -133,6 +121,17 @@
         </dependency>
 
     </dependencies>
+
+    <!-- Properties & Maven  -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <junit-plataform.version>5.3.2</junit-plataform.version>
+        <jasypt.version>2.1.2</jasypt.version>
+    </properties>
 
     <build>
         <plugins>
