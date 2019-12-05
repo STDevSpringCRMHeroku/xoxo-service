@@ -47,7 +47,7 @@ postgresql:
 mysql:
   datasource:
     #jdbc-Url: jdbc:mysql://localhost:3306/testdb?useSSL=false;useUnicode=true;useJDBCCompliantTimezoneShift=true;useLegacyDatetimeCode=false;serverTimezone=UTC
-    jdbc-Url: jdbc:mysql://localhost:3306/dbtest?useSSL=false&serverTimezone=UTC&useCursors=false&sendStringParametersAsUnicode=false&characterEncoding=UTF8
+    jdbc-Url: jdbc:mysql://localhost:3306/dbtest?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useCursors=false&sendStringParametersAsUnicode=false&characterEncoding=UTF8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
