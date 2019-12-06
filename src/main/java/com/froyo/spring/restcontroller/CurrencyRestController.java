@@ -1,7 +1,7 @@
 package com.froyo.spring.restcontroller;
 
-import com.froyo.spring.model.dto.CurrencyRequest;
-import com.froyo.spring.model.dto.CurrencyResponse;
+import com.froyo.spring.model.dto.CurrencyRequestDTO;
+import com.froyo.spring.model.dto.CurrencyResponseDTO;
 import com.froyo.spring.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,16 +23,16 @@ public class CurrencyRestController {
     private CurrencyService currencyMysqlServiceImpl;
 
     @PostMapping("/addCurrency")
-    private CurrencyResponse addCurrency(@RequestBody CurrencyRequest currencyRequest) {
+    private CurrencyResponseDTO addCurrency(@RequestBody CurrencyRequestDTO currencyRequestDTO) {
 
-        CurrencyResponse result = new CurrencyResponse();
-        result.setCurrencyRequest(currencyRequest);
+        CurrencyResponseDTO result = new CurrencyResponseDTO();
+        result.setCurrencyRequestDTO(currencyRequestDTO);
 
-        CurrencyResponse currencyResponseP = currencyPostgresService.saveCurrency(currencyRequest);
-        result.getMessagePairList().addAll(currencyResponseP.getMessagePairList());
+        CurrencyResponseDTO currencyResponseDTOP = currencyPostgresService.saveCurrency(currencyRequestDTO);
+        result.getMessagePairList().addAll(currencyResponseDTOP.getMessagePairList());
 
-        CurrencyResponse currencyResponseM = currencyMysqlServiceImpl.saveCurrency(currencyRequest);
-        result.getMessagePairList().addAll(currencyResponseM.getMessagePairList());
+        CurrencyResponseDTO currencyResponseDTOM = currencyMysqlServiceImpl.saveCurrency(currencyRequestDTO);
+        result.getMessagePairList().addAll(currencyResponseDTOM.getMessagePairList());
 
         return result;
     }

@@ -1,10 +1,10 @@
 package com.froyo.spring.service;
 
-import com.froyo.spring.model.dto.CurrencyRequest;
-import com.froyo.spring.model.dto.CurrencyResponse;
+import com.froyo.spring.model.dto.CurrencyRequestDTO;
+import com.froyo.spring.model.dto.CurrencyResponseDTO;
 
 public interface CurrencyService {
 
-    CurrencyResponse saveCurrency(final CurrencyRequest currencyEntityDTO);
+    CurrencyResponseDTO saveCurrency(final CurrencyRequestDTO currencyEntityDTO);
 
 }

@@ -2,8 +2,8 @@ package com.froyo.spring.service.impl;
 
 import com.froyo.messages.MessagePairUtils;
 import com.froyo.messages.codes.CurrencyMessageCode;
-import com.froyo.spring.model.dto.CurrencyRequest;
-import com.froyo.spring.model.dto.CurrencyResponse;
+import com.froyo.spring.model.dto.CurrencyRequestDTO;
+import com.froyo.spring.model.dto.CurrencyResponseDTO;
 import com.froyo.spring.model.entity.CurrencyEntity;
 import com.froyo.spring.repository.mysql.CurrencyMysqlRepository;
 import com.froyo.spring.service.CurrencyService;
@@ -17,17 +17,17 @@ public class CurrencyMysqlServiceImpl implements CurrencyService {
     private CurrencyMysqlRepository currencyMysqlRepository;
 
     @Override
-    public CurrencyResponse saveCurrency(final CurrencyRequest currencyRequest) {
+    public CurrencyResponseDTO saveCurrency(final CurrencyRequestDTO currencyRequestDTO) {
 
-        CurrencyResponse currencyResponse = new CurrencyResponse();
+        CurrencyResponseDTO currencyResponseDTO = new CurrencyResponseDTO();
 
         CurrencyEntity currencyEntity = new CurrencyEntity();
-        currencyEntity.setCurrency(currencyRequest.getCurrency());
+        currencyEntity.setCurrency(currencyRequestDTO.getCurrency());
 
         currencyMysqlRepository.save(currencyEntity);
-        currencyResponse.addMessagePair(MessagePairUtils.messagePair(CurrencyMessageCode.CY_1101));
+        currencyResponseDTO.addMessagePair(MessagePairUtils.messagePair(CurrencyMessageCode.CY_1101));
 
-        return currencyResponse;
+        return currencyResponseDTO;
     }
 
 }
