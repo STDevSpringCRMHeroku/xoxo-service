@@ -1,12 +1,12 @@
 spring:
   application:
-    name: XOXO Application
+    name: xoxo-service
 # -------------------------------- Datasources -------------------------------- #
 postgresql:
   datasource:
-    jdbc-Url: jdbc:postgresql://ec2-107-20-183-142.compute-1.amazonaws.com:5432/d986sp1hs8cc4m?sslmode=require
-    username: scvemignetfbdn
-    password: d8253d6f12d2d38361fd1e543a8f394f3626cb3bc7ac1fa245aa9e7ee4e19181
+    jdbc-Url: jdbc:postgresql://ec2-174-129-255-35.compute-1.amazonaws.com:5432/des2jhc9cmkhdg?sslmode=require
+    username: tujeqummmczqqx
+    password: eb6d00561667904b4c20caa22c690f51dbd289138ee57feb11732452fcdc35a4
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-test-query: SELECT 1 FROM DUAL
@@ -21,7 +21,7 @@ postgresql:
         ddl-auto: create
 mysql:
   datasource:
-    #jdbc-Url: jdbc:mysql://localhost:3306/testdb?useSSL=false;useUnicode=true;useJDBCCompliantTimezoneShift=true;useLegacyDatetimeCode=false;serverTimezone=UTC
+    #jdbc-Url: jdbc:mysql://localhost:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false;useUnicode=true;useJDBCCompliantTimezoneShift=true;useLegacyDatetimeCode=false;serverTimezone=UTC
     jdbc-Url: jdbc:mysql://localhost:3306/dbtest?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useCursors=false&sendStringParametersAsUnicode=false&characterEncoding=UTF8
     username: root
     password: root
@@ -30,19 +30,10 @@ mysql:
       connection-test-query: SELECT 1 FROM DUAL
       minimum-idle: 1
       maximum-pool-size: 5
-      poolName: SpringBootHikariPostgres
+      poolName: SpringBootHikariMysql
   jpa:
     show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         ddl-auto: create
-# -------------------------------- jasypt -------------------------------- 
-jasypt:
-  encryptor:
-    bean: encryptorBean
-
-#jasypt.encryptor.password=password
-#jasypt.encryptor.password=password
-#java -cp .m2/repository/org/jasypt/jasypt/1.9.3/jasypt-1.9.3.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="Topsecret@123" password=password algorithm=PBEWithMD5AndDES
-#java -cp .m2/repository/org/jasypt/jasypt/1.9.3/jasypt-1.9.3.jar org.jasypt.intf.cli.JasyptPBEStringDecryptionCLI input="xnEtUEQpYI2OT+SkCvov0yO8ZaZrVIYi" password=password algorithm=PBEWithMD5AndDES
