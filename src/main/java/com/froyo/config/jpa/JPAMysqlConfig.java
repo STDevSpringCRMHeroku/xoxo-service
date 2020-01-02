@@ -2,8 +2,8 @@ package com.froyo.config.jpa;
 
 import com.froyo.jpa.mysql.entity.DomainPackagesMysql;
 import com.froyo.jpa.mysql.repository.RepositoryPackageMysql;
+import lombok.AllArgsConstructor;
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -15,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+@AllArgsConstructor
 @Configuration
 @EnableJpaRepositories(
         entityManagerFactoryRef = "mysqlEntityManagerFactory",
@@ -23,11 +24,8 @@ import java.util.Properties;
 )
 public class JPAMysqlConfig {
 
-    @Autowired
-    private Environment env;
-
-    @Autowired
-    private DataSource datasourceMysql;
+    private final Environment env;
+    private final DataSource datasourceMysql;
 
     @Bean(name = "mysqlEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory() {

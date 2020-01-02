@@ -8,19 +8,17 @@ import com.froyo.jpa.postgres.repository.ProductRepository;
 import com.froyo.messages.MessagePairUtils;
 import com.froyo.messages.codes.CurrencyMessageCode;
 import com.froyo.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service("productServiceImpl")
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
-
-    @Autowired
-    private ProductConverter productConverter;
+    private final ProductRepository productRepository;
+    private final ProductConverter productConverter;
 
     @Override
     public ProductDTOResponse saveProduct(final ProductDTORequest productDTORequest) {

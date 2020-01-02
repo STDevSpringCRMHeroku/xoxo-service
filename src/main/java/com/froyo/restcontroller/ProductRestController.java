@@ -3,8 +3,8 @@ package com.froyo.restcontroller;
 import com.froyo.dto.ProductDTORequest;
 import com.froyo.dto.ProductDTOResponse;
 import com.froyo.service.ProductService;
+import lombok.AllArgsConstructor;
 import org.hibernate.validator.constraints.EAN;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +12,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Validated
+@AllArgsConstructor
 @RestController
 @RequestMapping("/product")
 public class ProductRestController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
 
     @PostMapping("/save")
     public ProductDTOResponse saveProduct(@RequestBody @Valid ProductDTORequest productDTORequest) {
