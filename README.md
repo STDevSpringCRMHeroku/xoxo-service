@@ -1,4 +1,4 @@
-# XOXO
+# xoxo-service
 
 ##### Patrones de diseño utilizados:
     DTO = Data Transfer Object
